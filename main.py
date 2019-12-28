@@ -4,7 +4,12 @@ def check(masses):
     try:
         return sum([check(m) for m in masses])
     except TypeError:
-        return int(masses/3)-2
+        fuel = int(masses/3)-2
+        if fuel <= 0:
+            return 0
+        else:
+            extra_fuel = check(fuel)
+            return fuel + extra_fuel
 
 def main():
     import argparse
